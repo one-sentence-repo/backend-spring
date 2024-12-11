@@ -8,15 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<User> getUsers() {
+    @GetMapping("/all")
+    public List<User> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @GetMapping
+    public User getUserById(@RequestParam Long id) {
+        return userService.getUserById(id);
     }
 
     @PostMapping
