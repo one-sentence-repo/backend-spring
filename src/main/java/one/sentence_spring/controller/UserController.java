@@ -2,30 +2,32 @@ package one.sentence_spring.controller;
 
 import one.sentence_spring.entity.User;
 import one.sentence_spring.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @GetMapping("/all")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
-    public User getUserById(@RequestParam Long id) {
-        return userService.getUserById(id);
+    public List<User> getUsers() {
+        return userService.getUsers();
+    }
+
+    @GetMapping("/users/{userId}")
+    public User getUser(@PathVariable Long userId) {
+        return userService.getUser(userId);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public void createUser(@RequestBody User user) {
+        userService.addUser(user);
     }
 }
