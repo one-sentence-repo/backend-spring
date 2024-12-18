@@ -1,4 +1,4 @@
-package one.sentence_spring.configuration;
+package one.sentence_spring.config;
 
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;

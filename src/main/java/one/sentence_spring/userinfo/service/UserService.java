@@ -1,8 +1,8 @@
 package one.sentence_spring.userinfo.service;
 
-import one.sentence_spring.userinfo.dto.AddUserRequest;
-import one.sentence_spring.userinfo.entity.UserInfo;
-import one.sentence_spring.userinfo.repository.UserRepository;
+import one.sentence_spring.userinfo.domain.UserInfo;
+import one.sentence_spring.userinfo.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,21 +10,22 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    private UserDao userDao;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Autowired
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
-    public void addUser(AddUserRequest request) {
-        userRepository.saveUser(request);
+    public void addUser(String userName, String email) {
+        userDao.saveUser(userName, email);
     }
 
     public List<UserInfo> getUsers() {
-        return userRepository.findAll();
+        return userDao.findAll();
     }
 
-    public UserInfo getUser(Long id) {
-        return userRepository.findById(id);
+    public UserInfo getUser(int id) {
+        return userDao.findById(id);
     }
 }

@@ -1,23 +1,19 @@
 package one.sentence_spring.userinfo.controller;
 
 import java.util.List;
-import one.sentence_spring.userinfo.dto.AddUserRequest;
-import one.sentence_spring.userinfo.entity.UserInfo;
+import one.sentence_spring.userinfo.domain.UserInfo;
 import one.sentence_spring.userinfo.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-  private final UserService userService;
+  private UserService userService;
 
-  public UserController(UserService userService) {
+  @Autowired
+  public void setUserService(UserService userService) {
     this.userService = userService;
   }
 
@@ -27,12 +23,12 @@ public class UserController {
   }
 
   @PostMapping
-  public void createUser(@RequestBody AddUserRequest request) {
-    userService.addUser(request);
+  public void addUser(@RequestBody String userName, @RequestBody String email) {
+    userService.addUser(userName, email);
   }
 
   @GetMapping("/{userId}")
-  public UserInfo getUser(@PathVariable Long userId) {
+  public UserInfo getUser(@PathVariable int userId) {
     return userService.getUser(userId);
   }
 }
