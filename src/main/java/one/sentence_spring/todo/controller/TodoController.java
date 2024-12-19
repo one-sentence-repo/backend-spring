@@ -1,7 +1,7 @@
 package one.sentence_spring.todo.controller;
 
 import java.util.List;
-import one.sentence_spring.todo.domain.Todo;
+import one.sentence_spring.todo.entity.Todo;
 import one.sentence_spring.todo.dto.AddTodoRequest;
 import one.sentence_spring.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/todos")
+@RequestMapping("/todo")
 public class TodoController {
 
   private TodoService todoService;
@@ -24,7 +24,7 @@ public class TodoController {
   }
 
   @GetMapping("/{userId}")
-  public List<Todo> getTodoInProgress(@PathVariable int userId) {
+  public List<Todo> getTodoInProgress(@PathVariable Long userId) {
     return todoService.getTodoInProgress(userId);
   }
 

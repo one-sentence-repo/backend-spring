@@ -1,7 +1,7 @@
 package one.sentence_spring.todo.service;
 
 import java.util.List;
-import one.sentence_spring.todo.domain.Todo;
+import one.sentence_spring.todo.entity.Todo;
 import one.sentence_spring.todo.dao.TodoDao;
 import one.sentence_spring.todo.dto.AddTodoRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,8 @@ public class TodoService {
     todoDao.saveTodo(request);
   }
 
-  public List<Todo> getTodoInProgress(int id) {
-    return todoDao.findAllTodoInProgress(id);
+  public List<Todo> getTodoInProgress(Long id) {
+    return todoDao.findTodosInProgress(id);
   }
 
 }

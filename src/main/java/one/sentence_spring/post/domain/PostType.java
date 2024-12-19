@@ -1,12 +1,11 @@
-package one.sentence_spring.post.entity;
+package one.sentence_spring.post.domain;
 
 import lombok.Getter;
 
 @Getter
 public enum PostType {
 
-  ARTICLE("article"),
-  JOURNAL("journal");
+  ARTICLE("article"), JOURNAL("journal");
 
   private final String value;
 

@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/one_sentence
+    username: jin-wook
+    password: free66
+    driver-class-name: org.postgresql.Driver
+
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+  jwt:
+    issuer: ajufresh@gamil.com
+    secret_key: study-springboot

@@ -1,11 +1,11 @@
-package one.sentence_spring.post.entity;
+package one.sentence_spring.post.domain;
 
 import lombok.Getter;
 
 @Getter
 public enum AccessType {
-  PUBLIC("public"),
-  PRIVATE("private");
+
+  PUBLIC("public"), PRIVATE("private");
 
   private final String value;
 

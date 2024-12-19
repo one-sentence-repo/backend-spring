@@ -1,4 +1,4 @@
-package one.sentence_spring.todo.domain;
+package one.sentence_spring.todo.entity;
 
 import java.sql.Timestamp;
 import lombok.Getter;
@@ -8,20 +8,13 @@ import lombok.Setter;
 @Setter
 public class Todo {
 
-  private int id;
-
+  private Long id;
   private Timestamp createdAt;
-
   private int index;
-
   private String content;
-
   private String memo;
-
-  private int folderId;
-
+  private Long folderId;
   private boolean isCompleted;
-
-  private int userId;
+  private Long userId;
 
 }
